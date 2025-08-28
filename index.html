@@ -76,7 +76,7 @@
   </div>
 
   <script>
-    // 模擬30天的訊息數據
+    // 訊息數據
     const messages = [
       { date: "2025-09-01", text: "親愛的，今天是我入伍第一天！想到你，我充滿動力！還記得我們一起聽的那首歌嗎？", image: "", clue: "" },
       { date: "2025-09-02", text: "軍中訓練有點累，但我想到你笑的樣子就覺得值得！", image: "", clue: "" },
@@ -121,7 +121,7 @@
       const messageAudio = document.getElementById('messageAudio');
 
       const todayMessage = messages.find(msg => msg.date === today) || {
-        text: "今天沒有新訊息，但我在軍中一直想著你哦！",
+        text: "希望你天天開心！",
         image: "",
         clue: ""
       };
@@ -148,4 +148,5 @@
     showSection('calendar');
   </script>
 </body>
+
 </html>
