@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>給你的每日驚喜</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-[#E0F7FA] min-h-screen font-sans">
+  <!-- 導航欄 -->
+  <nav class="bg-[#4FC3F7] text-white p-4 sticky top-0 z-10">
+    <div class="max-w-md mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span class="text-xl font-bold">給你的驚喜</span>
+      </div>
+      <button class="md:hidden" onclick="toggleMenu()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+        </svg>
+      </button>
+      <ul id="navMenu" class="hidden md:flex md:space-x-4 mt-2 md:mt-0">
+        <li><a href="#calendar" class="hover:underline" onclick="showSection('calendar')">每日訊息</a></li>
+        <li><a href="#album" class="hover:underline" onclick="showSection('album')">我們的相冊</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 日曆分頁 -->
+  <div id="calendar" class="section p-6 max-w-md mx-auto bg-white rounded-xl shadow-md mt-4">
+    <h1 class="text-2xl font-bold text-center text-[#4FC3F7] mb-4">給我最愛的你</h1>
+    <div class="text-center mb-4">
+      <p id="currentDate" class="text-xl font-semibold text-gray-700"></p>
+      <button id="showMessage" class="mt-4 px-6 py-2 bg-[#4FC3F7] text-white rounded-lg hover:bg-[#29B6F6] text-lg">查看今天的訊息</button>
+    </div>
+    <div id="message" class="mt-4 p-4 bg-[#F1FAFE] rounded-lg border border-[#B3E5FC] hidden animate-fade-in">
+      <p id="messageText" class="text-gray-800 text-lg leading-relaxed"></p>
+      <img id="messageImage" class="mt-2 w-full rounded-lg hidden" alt="每日圖片">
+      <audio id="messageAudio" class="mt-2 w-full hidden" controls></audio>
+    </div>
+  </div>
+
+  <!-- 相冊分頁 -->
+  <div id="album" class="section p-6 max-w-md mx-auto bg-white rounded-xl shadow-md mt-4 hidden">
+    <h1 class="text-2xl font-bold text-center text-[#4FC3F7] mb-4">我們的回憶</h1>
+    <div class="grid grid-cols-1 gap-4">
+      <div class="border rounded-lg p-2 bg-[#F1FAFE] animate-fade-in">
+        <img src="https://via.placeholder.com/300x200" alt="回憶照片" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '交往一週年那天')">
+        <p class="text-center text-gray-600 mt-2 text-lg">交往一週年那天</p>
+      </div>
+      <div class="border rounded-lg p-2 bg-[#F1FAFE] animate-fade-in">
+        <img src="https://via.placeholder.com/300x200" alt="回憶照片" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '一起聽音樂的夜晚')">
+        <p class="text-center text-gray-600 mt-2 text-lg">一起聽音樂的夜晚</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 照片放大 Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-4 rounded-xl max-w-lg w-11/12">
+      <img id="modalImage" class="w-full rounded-lg" alt="放大的照片">
+      <p id="modalCaption" class="text-center text-gray-600 mt-2 text-lg"></p>
+      <button class="mt-4 px-6 py-2 bg-[#4FC3F7] text-white rounded-lg hover:bg-[#29B6F6] text-lg" onclick="closeModal()">關閉</button>
+    </div>
+  </div>
+
+  <script>
+    // 模擬30天的訊息數據
+    const messages = [
+      { date: "2025-09-01", text: "親愛的，今天是我入伍第一天！想到你，我充滿動力！還記得我們一起聽的那首歌嗎？", image: "", clue: "" },
+      { date: "2025-09-02", text: "軍中訓練有點累，但我想到你笑的樣子就覺得值得！", image: "", clue: "" },
+      { date: "2025-09-03", text: "今天跑了3000公尺，超累！你在幹嘛？有沒有好好吃飯？", image: "", clue: "" },
+      { date: "2025-09-04", text: "偷偷告訴你，今天教官誇我站軍姿很標準，哈哈！去盒子看看，我留了東西給你！", image: "", clue: "線索：看看你的書桌抽屜，裡面有我寫的信！" },
+      { date: "2025-09-30", text: "新訓快結束了！再等等我，我們很快就能一起去看電影！", image: "", clue: "線索：盒子裡的最後一封信，寫了我對未來的期待！" }
+    ];
+
+    // 顯示指定分頁
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(section => section.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+      document.getElementById('navMenu').classList.add('hidden');
+    }
+
+    // 手機導航選單切換
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('hidden');
+    }
+
+    // 照片放大
+    function openModal(src, caption) {
+      document.getElementById('modalImage').src = src;
+      document.getElementById('modalCaption').textContent = caption;
+      document.getElementById('modal').classList.remove('hidden');
+    }
+
+    // 關閉 Modal
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    // 顯示當前日期
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('currentDate').textContent = `今天是 ${today}`;
+
+    // 點擊按鈕顯示訊息
+    document.getElementById('showMessage').addEventListener('click', () => {
+      const messageDiv = document.getElementById('message');
+      const messageText = document.getElementById('messageText');
+      const messageImage = document.getElementById('messageImage');
+      const messageAudio = document.getElementById('messageAudio');
+
+      const todayMessage = messages.find(msg => msg.date === today) || {
+        text: "今天沒有新訊息，但我在軍中一直想著你哦！",
+        image: "",
+        clue: ""
+      };
+
+      messageText.textContent = todayMessage.text + (todayMessage.clue ? `\n${todayMessage.clue}` : '');
+      messageDiv.classList.remove('hidden');
+
+      if (todayMessage.image) {
+        messageImage.src = todayMessage.image;
+        messageImage.classList.remove('hidden');
+      } else {
+        messageImage.classList.add('hidden');
+      }
+
+      if (todayMessage.audio) {
+        messageAudio.src = todayMessage.audio;
+        messageAudio.classList.remove('hidden');
+      } else {
+        messageAudio.classList.add('hidden');
+      }
+    });
+
+    // 預設顯示日曆分頁
+    showSection('calendar');
+  </script>
+</body>
+</html>
