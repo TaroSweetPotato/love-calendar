@@ -23,7 +23,7 @@
         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
-        <span class="text-xl font-bold">給你的驚喜</span>
+        <span class="text-xl font-bold">For Jocelyn</span>
       </div>
       <button class="md:hidden" onclick="toggleMenu()">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,7 +39,7 @@
 
   <!-- 日曆分頁 -->
   <div id="calendar" class="section p-6 max-w-md mx-auto bg-white rounded-xl shadow-md mt-4">
-    <h1 class="text-2xl font-bold text-center text-[#4FC3F7] mb-4">給我最愛的你</h1>
+    <h1 class="text-2xl font-bold text-center text-[#4FC3F7] mb-4">嗨!今天過得如何呀</h1>
     <div class="text-center mb-4">
       <p id="currentDate" class="text-xl font-semibold text-gray-700"></p>
       <button id="showMessage" class="mt-4 px-6 py-2 bg-[#4FC3F7] text-white rounded-lg hover:bg-[#29B6F6] text-lg">查看今天的訊息</button>
@@ -121,7 +121,7 @@
       const messageClue = document.getElementById('messageClue');
 
       const todayMessage = messages.find(msg => msg.date === today) || {
-        text: "希望你天天開心！",
+        text: "希望你天天開心，祝你七夕情人節快樂！",
         image: "",
         clue: ""
       };
@@ -149,4 +149,5 @@
   </script>
 </body>
 </html>
+
 
