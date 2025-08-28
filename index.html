@@ -56,12 +56,12 @@
     <h1 class="text-2xl font-bold text-center text-[#4FC3F7] mb-4">我們的回憶</h1>
     <div class="grid grid-cols-1 gap-4">
       <div class="border rounded-lg p-2 bg-[#F1FAFE] animate-fade-in">
-        <img src="https://via.placeholder.com/300x200" alt="回憶照片" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '苗栗一日遊')">
-        <p class="text-center text-gray-600 mt-2 text-lg">苗栗一日遊</p>
+        <img src="https://via.placeholder.com/300x200" alt="回憶照片" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '苗栗南庄老街一日遊')">
+        <p class="text-center text-gray-600 mt-2 text-lg">苗栗南庄老街一日遊</p>
       </div>
       <div class="border rounded-lg p-2 bg-[#F1FAFE] animate-fade-in">
-        <img src="https://via.placeholder.com/300x200" alt="回憶照片" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '一起聽音樂會的夜晚')">
-        <p class="text-center text-gray-600 mt-2 text-lg">一起聽音樂會的夜晚</p>
+        <img src="https://via.placeholder.com/300x200" alt="回憶照片" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '一起聽音樂的夜晚')">
+        <p class="text-center text-gray-600 mt-2 text-lg">一起聽音樂的夜晚</p>
       </div>
     </div>
   </div>
@@ -75,6 +75,77 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // 內嵌訊息數據
+    const messages = [
+      { date: "2025-09-01", text: "親愛的，今天是我入伍第一天！想到你，我充滿動力！還記得我們一起聽的那首歌嗎？", image: "photos/dish1.jpg", clue: "" },
+      { date: "2025-09-02", text: "軍中訓練有點累，但我想到你笑的樣子就覺得值得！", image: "photos/funphoto1.jpg", clue: "" },
+      { date: "2025-09-03", text: "今天跑了3000公尺，超累！你在幹嘛？有沒有好好吃飯？", image: "", clue: "" },
+      { date: "2025-09-04", text: "偷偷告訴你，今天教官誇我站軍姿很標準，哈哈！去盒子看看，我留了東西給你！", image: "", clue: "線索：看看你的書桌抽屜，裡面有我寫的信！" },
+      { date: "2025-09-30", text: "新訓快結束了！再等等我，我們很快就能一起去看電影！", image: "photos/dish2.jpg", clue: "線索：盒子裡的最後一封信，寫了我對未來的期待！" }
+    ];
+
+    // 顯示指定分頁
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(section => section.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+      document.getElementById('navMenu').classList.add('hidden');
+    }
+
+    // 手機導航選單切換
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('hidden');
+    }
+
+    // 照片放大
+    function openModal(src, caption) {
+      document.getElementById('modalImage').src = src;
+      document.getElementById('modalCaption').textContent = caption;
+      document.getElementById('modal').classList.remove('hidden');
+    }
+
+    // 關閉 Modal
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    // 顯示當前日期
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('currentDate').textContent = `今天是 ${today}`;
+
+    // 點擊按鈕顯示訊息
+    document.getElementById('showMessage').addEventListener('click', () => {
+      const messageDiv = document.getElementById('message');
+      const messageText = document.getElementById('messageText');
+      const messageImage = document.getElementById('messageImage');
+      const messageClue = document.getElementById('messageClue');
+
+      const todayMessage = messages.find(msg => msg.date === today) || {
+        text: "希望你天天開心！",
+        image: "",
+        clue: ""
+      };
+
+      messageText.textContent = todayMessage.text;
+      messageDiv.classList.remove('hidden');
+
+      if (todayMessage.image) {
+        messageImage.src = todayMessage.image;
+        messageImage.classList.remove('hidden');
+      } else {
+        messageImage.classList.add('hidden');
+      }
+
+      if (todayMessage.clue) {
+        messageClue.textContent = todayMessage.clue;
+        messageClue.classList.remove('hidden');
+      } else {
+        messageClue.classList.add('hidden');
+      }
+    });
+
+    // 預設顯示日曆分頁
+    showSection('calendar');
+  </script>
 </body>
 </html>
