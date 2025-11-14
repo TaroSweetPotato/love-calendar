@@ -47,17 +47,20 @@
     .hint-modal-content button:hover {
       background: #29B6F6;
     ｝
-      /* 原本的樣式保持不變 ... */
-
-  /* === 讓訊息內容支援 \n 換行 + 保留空格 === */
-  #messageText {
-  white-space: pre;
-  word-break: break-word;
-  font-family: 'Courier New', Courier, monospace !important;
-  line-height: 1.5;
-  font-size: 16px;
-  text-align: center; /* 讓愛心置中更美 */
-}
+    #messageText {
+      white-space: pre;
+      font-family: 'Courier New', Courier, monospace !important;
+      line-height: 1.4;
+      font-size: 16px;
+      text-align: center;
+      word-break: keep-all;
+    }
+      @media (max-width: 640px) {
+        #messageText {
+          font-size: 14px;
+          letter-spacing: 0.5px；
+        }
+    }
     
   </style>
 </head>
@@ -252,6 +255,7 @@
   </script>
 </body>
 </html>
+
 
 
 
