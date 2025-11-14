@@ -95,7 +95,7 @@
       <button id="showMessage" class="mt-4 px-6 py-2 bg-[#4FC3F7] text-white rounded-lg hover:bg-[#29B6F6] text-lg">查看今天的訊息</button>
     </div>
     <div id="message" class="mt-4 p-4 bg-[#F1FAFE] rounded-lg border border-[#B3E5FC] hidden animate-fade-in">
-      <p id="messageText" class="text-gray-800 text-lg leading-relaxed"></p>
+      <p id="messageText" class="text-gray-800 text-lg leading-relaxed font-mono whitespace-pre text-center"></p>
       <img id="messageImage" class="mt-2 w-full rounded-lg hidden" alt="每日圖片">
       <p id="messageClue" class="text-gray-600 text-md mt-2 hidden"></p>
     </div>
@@ -229,7 +229,7 @@
         clue: ""
       };
 
-      messageText.textContent = todayMessage.text;
+      messageText.innerHTML = todayMessage.text;
       messageDiv.classList.remove('hidden');
 
       if (todayMessage.image) {
@@ -255,6 +255,7 @@
   </script>
 </body>
 </html>
+
 
 
 
