@@ -51,19 +51,12 @@
 
   /* === 讓訊息內容支援 \n 換行 + 保留空格 === */
   #messageText {
-    white-space: pre-line;   /* 關鍵！讓 \n 變成換行 */
-    word-break: break-word;  /* 手機上太長的行會自動斷行 */
-    font-family: 'Courier New', monospace; /* 可選：讓愛心對齊更整齊 */
-  }
-
-      monospace !important;
-    line-height: 1.5;
-    font-size: 16px;
-    text-align: center;
-  }
-    #messageText span.heart {
-  color: #FF6B6B;
-  font-weight: bold;
+  white-space: pre-line;
+  word-break: break-word;
+  font-family: 'Courier New', Courier, monospace !important;
+  line-height: 1.5;
+  font-size: 16px;
+  text-align: center; /* 讓愛心置中更美 */
 }
     
   </style>
@@ -259,6 +252,7 @@
   </script>
 </body>
 </html>
+
 
 
 
