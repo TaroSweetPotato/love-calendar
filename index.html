@@ -46,7 +46,16 @@
     }
     .hint-modal-content button:hover {
       background: #29B6F6;
-    }
+    ｝
+      /* 原本的樣式保持不變 ... */
+
+  /* === 讓訊息內容支援 \n 換行 + 保留空格 === */
+  #messageText {
+    white-space: pre-line;   /* 關鍵！讓 \n 變成換行 */
+    word-break: break-word;  /* 手機上太長的行會自動斷行 */
+    font-family: 'Courier New', monospace; /* 可選：讓愛心對齊更整齊 */
+  }
+    
   </style>
 </head>
 <body class="bg-[#E0F7FA] min-h-screen font-sans">
@@ -230,6 +239,7 @@
   </script>
 </body>
 </html>
+
 
 
 
