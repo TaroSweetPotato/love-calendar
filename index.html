@@ -95,7 +95,7 @@
       <button id="showMessage" class="mt-4 px-6 py-2 bg-[#4FC3F7] text-white rounded-lg hover:bg-[#29B6F6] text-lg">查看今天的訊息</button>
     </div>
     <div id="message" class="mt-4 p-4 bg-[#F1FAFE] rounded-lg border border-[#B3E5FC] hidden animate-fade-in">
-      <p id="messageText" class="text-gray-800 text-lg leading-relaxed font-mono whitespace-pre text-center"></p>
+      <p id="messageText" class="text-gray-800 text-lg leading-relaxed"></p>
       <img id="messageImage" class="mt-2 w-full rounded-lg hidden" alt="每日圖片">
       <p id="messageClue" class="text-gray-600 text-md mt-2 hidden"></p>
     </div>
@@ -215,16 +215,23 @@
       const messageClue = document.getElementById('messageClue');
 
       const todayMessage = messages.find(msg => msg.date === today) || {
-        text: "明天就可以見到你了，感覺今天的時間過得好慢，我不斷看著手錶，看著時針、分針緩緩的移動，我的心情像秒針一樣一直旋轉，希望明天的到來，我也好想你，\n\n畫一個大愛心送給你～\n\n" +
-        "　　　♡　　　　　♡\n" +
-        "　　♡♡♡　　　♡♡♡\n" +
-        "　♡♡♡♡♡　♡♡♡♡♡\n" +
-        "　♡♡♡♡♡♡♡♡♡♡♡\n" +
-        "　　♡♡♡♡♡♡♡♡♡\n" +
-        "　　　♡♡♡♡♡♡♡\n" +
-        "　　　　♡♡♡♡♡\n" +
-        "　　　　　♡♡♡\n" +
-        "　　　　　　♡",
+        text: `
+明天就可以見到你了，感覺今天的時間過得好慢，我不斷看著手錶，看著時針、分針緩緩的移動，我的心情像秒針一樣一直旋轉，只希望明天快點到來，我也好想你。
+
+畫一個大愛心送給你～
+
+<pre class="font-mono whitespace-pre text-center leading-[1.2] text-[16px]">
+      ♡              ♡
+    ♡♡♡          ♡♡♡
+  ♡♡♡♡♡      ♡♡♡♡♡
+♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
+  ♡♡♡♡♡♡♡♡♡♡♡
+    ♡♡♡♡♡♡♡♡
+      ♡♡♡♡♡
+        ♡♡♡
+          ♡
+</pre>
+`,
         image: "",
         clue: ""
       };
@@ -255,6 +262,7 @@
   </script>
 </body>
 </html>
+
 
 
 
