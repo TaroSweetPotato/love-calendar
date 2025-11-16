@@ -46,7 +46,7 @@
     }
     .hint-modal-content button:hover {
       background: #29B6F6;
-    ｝
+    }
     #messageText {
       white-space: pre;
       font-family: 'Courier New', Courier, monospace !important;
@@ -55,13 +55,12 @@
       text-align: center;
       word-break: keep-all;
     }
-      @media (max-width: 640px) {
-        #messageText {
-          font-size: 14px;
-          letter-spacing: 0.5px；
-        }
+    @media (max-width: 640px) {
+      #messageText {
+        font-size: 14px;
+        letter-spacing: 0.5px;
+      }
     }
-    
   </style>
 </head>
 <body class="bg-[#E0F7FA] min-h-screen font-sans">
@@ -69,13 +68,13 @@
   <nav class="bg-[#4FC3F7] text-white p-4 sticky top-0 z-10">
     <div class="max-w-md mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-2">
-        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
         <span class="text-xl font-bold">For Jocelyn</span>
       </div>
-      <button class="md:hidden" onclick="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button class="md:hidden" onclick="toggleMenu()" aria-label="開啟選單">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
         </svg>
       </button>
@@ -88,8 +87,7 @@
 
   <!-- 日曆分頁 -->
   <div id="calendar" class="section p-6 max-w-md mx-auto bg-white rounded-xl shadow-md mt-4">
-    <h1 class="text-2xl font-bold text-center text-[#4FC3F7] mb-4">寶寶！今天過得好嗎?
-    </h1>
+    <h1 class="text-2xl font-bold text-center text-[#4FC3F7] mb-4">寶寶！今天過得好嗎?</h1>
     <div class="text-center mb-4">
       <p id="currentDate" class="text-xl font-semibold text-gray-700"></p>
       <button id="showMessage" class="mt-4 px-6 py-2 bg-[#4FC3F7] text-white rounded-lg hover:bg-[#29B6F6] text-lg">查看今天的訊息</button>
@@ -103,33 +101,33 @@
 
   <!-- 相冊分頁 -->
   <div id="album" class="section p-6 max-w-md mx-auto bg-white rounded-xl shadow-md mt-4 hidden">
-    <h1 class="text-2xl font-bold text-center text-[#4FC3F7] mb-4">Good Memories </h1>
+    <h1 class="text-2xl font-bold text-center text-[#4FC3F7] mb-4">Good Memories</h1>
     <div class="grid grid-cols-1 gap-4">
       <div class="border rounded-lg p-2 bg-[#F1FAFE] animate-fade-in">
-        <img src="photo/photo2.jpg" alt="回憶照片" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '2024.9.17🌤️ 苗栗南庄老街一日遊')">
+        <img src="photo/photo2.jpg" alt="回憶照片 2024.9.17 苗栗南庄老街一日遊" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '2024.9.17🌤️ 苗栗南庄老街一日遊')">
         <p class="text-center text-gray-600 mt-2 text-lg">2024.9.17🌤️ 苗栗南庄老街一日遊</p>
       </div>
       <div class="border rounded-lg p-2 bg-[#F1FAFE] animate-fade-in">
-        <img src="photo/photo1.jpg" alt="回憶照片" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '2024.11.24🌤️ 北大校園散步')">
+        <img src="photo/photo1.jpg" alt="回憶照片 2024.11.24 北大校園散步" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '2024.11.24🌤️ 北大校園散步')">
         <p class="text-center text-gray-600 mt-2 text-lg">2024.11.24🌤️ 北大校園散步</p>
       </div>
       <div class="border rounded-lg p-2 bg-[#F1FAFE] animate-fade-in">
-        <img src="photo/IMG_9996.jpg" alt="回憶照片" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '2024.9.17🌤️ 苗栗南庄老街，前往老街路上')">
+        <img src="photo/IMG_9996.jpg" alt="回憶照片 苗栗南庄老街" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '2024.9.17🌤️ 苗栗南庄老街，前往老街路上')">
         <p class="text-center text-gray-600 mt-2 text-lg">2024.9.17🌤️ 苗栗南庄老街，前往老街路上</p>
       </div>
       <div class="border rounded-lg p-2 bg-[#F1FAFE] animate-fade-in">
-        <img src="photo/IMG_0013.jpg" alt="回憶照片" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '2024.9.17 觀天下景觀餐廳夜景')">
+        <img src="photo/IMG_0013.jpg" alt="回憶照片 觀天下景觀餐廳夜景" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '2024.9.17 觀天下景觀餐廳夜景')">
         <p class="text-center text-gray-600 mt-2 text-lg">2024.9.17 觀天下景觀餐廳夜景</p>
       </div>
       <div class="border rounded-lg p-2 bg-[#F1FAFE] animate-fade-in">
-        <img src="photo/IMG_9956.jpg" alt="回憶照片" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '2024.9.14🌥️ 早起出門吃阜杭豆漿')">
+        <img src="photo/IMG_9956.jpg" alt="回憶照片 早起出門吃阜杭豆漿" class="w-full rounded-lg cursor-pointer" onclick="openModal(this.src, '2024.9.14🌥️ 早起出門吃阜杭豆漿')">
         <p class="text-center text-gray-600 mt-2 text-lg">2024.9.14🌥️ 早起出門吃阜杭豆漿</p>
       </div>
     </div>
   </div>
 
   <!-- 照片放大 Modal -->
-  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" aria-hidden="true">
     <div class="bg-white p-4 rounded-xl max-w-lg w-11/12">
       <img id="modalImage" class="w-full rounded-lg" alt="放大的照片">
       <p id="modalCaption" class="text-center text-gray-600 mt-2 text-lg"></p>
@@ -138,28 +136,36 @@
   </div>
 
   <!-- 提示彈窗 -->
-  <div id="hintModal" class="hint-modal hidden">
+  <div id="hintModal" class="hint-modal hidden" role="dialog" aria-modal="true" aria-labelledby="hintTitle">
     <div class="hint-modal-content animate-fade-in">
-      <p>親愛的痰寶寶，這個網站是我送你的神祕禮物，希望你會喜歡，我把有趣的東西都放在這了，希望我當兵不在的時候，你不會覺得太無聊，每天都會有不同的訊息哦！記得點右上角的漢堡按鈕（☰）可以切換到「每日訊息」或「我們的相冊」哦！試試看吧！😺😺</p>
+      <p id="hintTitle">親愛的痰寶寶，這個網站是我送你的神祕禮物，希望你會喜歡，我把有趣的東西都放在這了，希望我當兵不在的時候，你不會覺得太無聊，每天都會有不同的訊息哦！記得點右上角的漢堡按鈕（☰）可以切換到「每日訊息」或「我們的相冊」哦！試試看吧！😺😺</p>
       <button onclick="closeHintModal()">我知道啦！</button>
     </div>
   </div>
 
   <script>
-    // 內嵌訊息數據
+    // 內嵌訊息數據（注意：日期格式為 YYYY-MM-DD）
     const messages = [
-      { date: "2026-10-21", text: "親愛的，今天是我入伍第一天！想到你，我充滿動力！還記得我們一起聽的那首歌嗎？", image: "photos/dish1.jpg", clue: "" },
-      { date: "2026-10-22", text: "軍中訓練有點累，但我想到你笑的樣子就覺得值得！", image: "photos/funphoto1.jpg", clue: "" },
+      { date: "2026-10-21", text: "親愛的，今天是我入伍第一天！想到你，我充滿動力！還記得我們一起聽的那首歌嗎？", image: "photo/dish1.jpg", clue: "" },
+      { date: "2026-10-22", text: "軍中訓練有點累，但我想到你笑的樣子就覺得值得！", image: "photo/funphoto1.jpg", clue: "" },
       { date: "2026-10-23", text: "今天跑了3000公尺，超累！你在幹嘛？有沒有好好吃飯？", image: "", clue: "" },
       { date: "2026-10-24", text: "偷偷告訴你，今天教官誇我站軍姿很標準，哈哈！去盒子看看，我留了東西給你！", image: "", clue: "線索：看看你的書桌抽屜，裡面有我寫的信！" },
-      { date: "2026-10-25", text: "新訓快結束了！再等等我，我們很快就能一起去看電影！", image: "photos/dish2.jpg", clue: "線索：盒子裡的最後一封信，寫了我對未來的期待！" }
+      { date: "2026-10-25", text: "新訓快結束了！再等等我，我們很快就能一起去看電影！", image: "photo/dish2.jpg", clue: "線索：盒子裡的最後一封信，寫了我對未來的期待！" }
     ];
 
     // 顯示指定分頁
     function showSection(sectionId) {
       document.querySelectorAll('.section').forEach(section => section.classList.add('hidden'));
-      document.getElementById(sectionId).classList.remove('hidden');
-      document.getElementById('navMenu').classList.add('hidden');
+      const el = document.getElementById(sectionId);
+      if (el) el.classList.remove('hidden');
+      // 在手機上選單點擊後自動關閉選單
+      const navMenu = document.getElementById('navMenu');
+      if (navMenu && !navMenu.classList.contains('md:flex')) {
+        navMenu.classList.add('hidden');
+      } else {
+        // 若是小螢幕，確保隱藏
+        navMenu.classList.add('hidden');
+      }
     }
 
     // 手機導航選單切換
@@ -169,9 +175,11 @@
 
     // 照片放大
     function openModal(src, caption) {
+      const modal = document.getElementById('modal');
       document.getElementById('modalImage').src = src;
+      document.getElementById('modalImage').alt = caption;
       document.getElementById('modalCaption').textContent = caption;
-      document.getElementById('modal').classList.remove('hidden');
+      modal.classList.remove('hidden');
     }
 
     // 關閉 Modal
@@ -181,9 +189,14 @@
 
     // 檢查是否為初次進入並顯示提示
     function showHintModal() {
-      if (!localStorage.getItem('hintShown')) {
+      try {
+        if (!localStorage.getItem('hintShown')) {
+          document.getElementById('hintModal').classList.remove('hidden');
+          localStorage.setItem('hintShown', 'true');
+        }
+      } catch (e) {
+        // 若 localStorage 不可用，仍顯示一次提示
         document.getElementById('hintModal').classList.remove('hidden');
-        localStorage.setItem('hintShown', 'true');
       }
     }
 
@@ -192,20 +205,27 @@
       document.getElementById('hintModal').classList.add('hidden');
     }
 
-    // 格式化台灣時區日期
+    // 格式化台灣時區日期為 YYYY-MM-DD
     function getTaiwanDate() {
       const taiwanDate = new Date().toLocaleDateString('zh-TW', {
         timeZone: 'Asia/Taipei',
         year: 'numeric',
         month: '2-digit',
         day: '2-digit'
-      }).split('/').join('-'); // 格式化為 YYYY-MM-DD
+      }).split('/').join('-'); // 例如 "2025/11/16" -> "2025-11-16"
       return taiwanDate;
     }
 
     // 顯示當前日期（台灣時區）
     const today = getTaiwanDate();
     document.getElementById('currentDate').textContent = `今天是 ${today}`;
+
+    // fallback 訊息（當今日沒有對應訊息時顯示）
+    const fallbackMessage = {
+      text: "收假搭車時我不夠貼心，真的很抱歉，你真的辛苦了～你明明很累，卻還是特地煮好吃的東西給我吃，我沒有好好回覆你的這份心意，行為上也不夠貼心溫暖，我在很多地方都很不足，而你願意在我身邊，我知道你的這些付出都不是我應得的，我應該好好珍惜的，做的更好，你這陣子準備proposal口試花了不少時間、金錢和精力，假日特地來汐止陪我，謝謝你，我覺得自己很幸福，有轉給你一點搭車錢，如果你能收下，我會很開心的，謝謝你這週末陪我。",
+      image: "",
+      clue: ""
+    };
 
     // 點擊按鈕顯示訊息
     document.getElementById('showMessage').addEventListener('click', () => {
@@ -214,17 +234,15 @@
       const messageImage = document.getElementById('messageImage');
       const messageClue = document.getElementById('messageClue');
 
-      const todayMessage = messages.find(msg => msg.date === today) || {
-        text: "收假搭車時我不夠貼心，真的很抱歉，你真的辛苦了～你明明很累，卻還是特地煮好吃的東西給我吃，我沒有好好回覆你的這份心意，行為上也不夠貼心溫暖，我在很多地方都很不足，而你願意在我身邊，我知道你的這些付出都不是我應得的，我應該好好珍惜的，做的更好，你這陣子準備proposal口試花了不少時間、金錢和精力，假日特地來汐止陪我，謝謝你，我覺得自己很幸福，有轉給你一點搭車錢，如果你能收下，我會很開心的，謝謝你這週末陪我。"
-        image: "",
-        clue: ""
-      };
+      const todayMessage = messages.find(msg => msg.date === today) || fallbackMessage;
 
-      messageText.innerHTML = todayMessage.text;
+      // 顯示內容
+      messageText.textContent = todayMessage.text || "";
       messageDiv.classList.remove('hidden');
 
       if (todayMessage.image) {
         messageImage.src = todayMessage.image;
+        messageImage.alt = "每日圖片";
         messageImage.classList.remove('hidden');
       } else {
         messageImage.classList.add('hidden');
@@ -246,71 +264,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
